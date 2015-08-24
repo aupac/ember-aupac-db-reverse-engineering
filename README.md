@@ -45,7 +45,7 @@ You need to download the JDBC driver specific to your database vendor and versio
 
 Once downloaded, copy the `.jar` file to  `db-reverse-engineering/drvers/` in your project.
 
-* I Will accept pull requests to update/add driver links.
+* I will accept pull requests to update/add driver links.
 
 #### Step 2 - Setup your database connection
 
@@ -81,9 +81,9 @@ Sometimes the reverse engineering strategy does not interpolate your database th
 
 You are able to fine tune they way it works via the `db-reverse-engineering/hibernate.reveng.xml` file.
 
-More information can be found in the [hibernate documentations](http://docs.jboss.org/tools/latest/en/hibernatetools/html/reverseengineering.html).
+More information can be found in the [hibernate documentation](http://docs.jboss.org/tools/latest/en/hibernatetools/html/reverseengineering.html).
 
-* If you find some useful strategies that others might be able to use, submit an issue and we can include in in the documentation somewhere.
+* If you find some useful strategies that others might be able to use, submit an issue and we can include it in the documentation somewhere.
 
 ### Commands
 
@@ -96,8 +96,8 @@ From within your project run:
 ember db-reverse-engineer emberData 
 ```
 
-`app/models/gen` - contains the generated models. These are replaced every time you run the command and should never be edited manually!
-`app/models` - contains the ember-data models used in your application. Once created, these are never replaced so feel free to customise them as you wish.
+- `app/models/gen` - contains the generated models. These are replaced every time you run the command and should never be edited manually!
+- `app/models` - contains the ember-data models used in your application. Once created, these are never replaced so feel free to customise them as you wish.
 
 #### Generate ember-cli-mirage factories & routes
 From within your project run:
@@ -106,8 +106,8 @@ From within your project run:
 ember db-reverse-engineer emberCliMirage
 ```
 
-`app/mirage/gen` - contains the generated factories and routes.js file. These are replaced every time you run the command and should never be edited manually!
-`app/mirage/factories` - contains the factories used in your application. Once created, these are never replaced so feel free to customise them as you wish.
+- `app/mirage/gen` - contains the generated factories and routes.js file. These are replaced every time you run the command and should never be edited manually!
+- `app/mirage/factories` - contains the factories used in your application. Once created, these are never replaced so feel free to customise them as you wish.
 
 The routes are generated in a files called `app/mirage/gen/routes.js`.  You can copy/paste these into your `app/mirage/config.js` file but a better way is to import it - that way you get route updates automatically.
 
