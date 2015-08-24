@@ -4,7 +4,6 @@
 var path = require('path'),
   spawn = require('child_process').spawn,
   RSVP = require('rsvp'),
-  //fs = require('fs'),
   chalk = require('chalk'),
   isWin = /^win/.test(process.platform),
   gradlePathLinux = path.resolve('db-reverse-engineering', 'gradlew'),
