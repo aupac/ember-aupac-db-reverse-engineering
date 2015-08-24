@@ -1,7 +1,7 @@
 {
   "name": "ember-aupac-db-reverse-engineering",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Generate ember-data models by reverse engineering your database!",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -38,10 +38,13 @@
     "ember-try": "0.0.6"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "database reverse engineering"
   ],
   "dependencies": {
-    "ember-cli-babel": "^5.0.0"
+    "ember-cli-babel": "^5.0.0",
+    "rsvp": "^3.0.17",
+    "chalk": "^1.0.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
