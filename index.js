@@ -7,8 +7,8 @@ var path = require('path'),
   //fs = require('fs'),
   chalk = require('chalk'),
   isWin = /^win/.test(process.platform),
-  gradlePathLinux = path.resolve(__dirname, 'db-reverse-engineering', 'gradlew'),
-  gradlePathWindows = path.resolve(__dirname, 'db-reverse-engineering', 'gradlew.bat');
+  gradlePathLinux = path.resolve('db-reverse-engineering', 'gradlew'),
+  gradlePathWindows = path.resolve('db-reverse-engineering', 'gradlew.bat');
 
 module.exports = {
   name: 'ember-aupac-db-reverse-engineering',
@@ -29,6 +29,7 @@ module.exports = {
               for (i = 0; i < args.length; i++) {
                 options.push(args[i]);
               }
+              console.log(options);
               child = spawn('cmd.exe', options);
             } else {
               options = [gradlePathLinux, '--project-dir=./db-reverse-engineering/'];
@@ -85,95 +86,4 @@ module.exports = {
       }
     }
   }
-  /*
-  includedCommands: function () {
-    return {
-      windows: {
-        name: 'windows',
-        aliases: ['win'],
-        description: 'Configure Windows Search and Defender to improve performance for this project',
-        works: 'insideProject',
-
-        runCommand: function (args) {
-          return new RSVP.Promise(function (resolve, reject) {
-            var child, result, options, i;
-
-            options = [cliPath];
-            options.push('headless');
-            for (i = 0; i < args.length; i = i + 1) {
-              if (args.hasOwnProperty(args[i])) {
-                options.push(args[i]);
-              }
-            }
-
-            child = spawn('node', options);
-            result = {
-              output: [],
-              errors: [],
-              code: null
-            };
-
-            child.stdout.on('data', function (data) {
-              var string = data.toString();
-              if (this.ui) {
-                this.ui.writeLine(string);
-              } else {
-                console.log(string);
-              }
-
-              result.output.push(string);
-            });
-
-            child.stderr.on('data', function (data) {
-              var string = data.toString();
-              if (this.ui) {
-                this.ui.writeLine(string);
-              } else {
-                console.error(string);
-              }
-
-              result.errors.push(string);
-            });
-
-            child.on('close', function (code) {
-              result.code = code;
-
-              if (code === 0) {
-                touch.sync(path.join(__dirname, '.configured'));
-                resolve(result);
-              } else {
-                reject(result);
-              }
-            });
-          });
-        },
-
-        run: function (options, rawArgs) {
-          if (!isWin) {
-            return;
-          }
-
-          return this.runCommand(rawArgs);
-        }
-      }
-    };
-  },
-
-  preBuild: function () {
-    if (!isWin) {
-      try {
-        var stats = fs.lstatSync(path.join(__dirname, '.configured')); // jshint ignore:line
-      } catch (error) {
-        // .configured doesn't exist, meaning that we're not configured yet
-        if (this.ui) {
-          this.ui.writeLine(chalk.green.bold('Please run \'ember windows\` to configure Windows for better build performance.'));
-        } else {
-          console.log(chalk.green.bold('Please run \'ember windows\` to configure Windows for better build performance.'));
-        }
-      }
-    }
-    return;
-  }
-  */
-
 };

@@ -93,7 +93,7 @@ The first time you run any of the following command it will take some time becau
 From within your project run:
 
 ```bash
-ember db-reverse-engineer emberData 
+ember db-reverse-engineer emberData
 ```
 
 - `app/models/gen` - contains the generated models. These are replaced every time you run the command and should never be edited manually!
