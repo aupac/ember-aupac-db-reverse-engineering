@@ -1,5 +1,7 @@
 # ember-aupac-db-reverse-engineering
 
+[![NPM package](https://img.shields.io/npm/v/ember-aupac-db-reverse-engineering.svg)](https://www.npmjs.com/package/ember-aupac-db-reverse-engineering) [![Build Status](https://img.shields.io/travis/aupac/ember-aupac-db-reverse-engineering.svg)](https://travis-ci.org/aupac/ember-aupac-db-reverse-engineering) [![Ember Observer Score](http://emberobserver.com/badges/ember-aupac-db-reverse-engineering.svg)](http://emberobserver.com/addons/ember-aupac-db-reverse-engineering)
+
 Reverse engineer your database and create your `ember-data` models and `ember-cli-mirage` factories automatically.
 - Change you database structure and regenerate you models to ensure they are always in sync.
 - Regenerate safely at any time without loosing your customisations.
@@ -18,6 +20,8 @@ This is for development only - the server hosting you app can run any OS you lik
 - Mac ??? (needs to be tested)
 
 ## Installing
+Note - this will remain beta until 1.0.0, please raise issues if things are not working as expected.
+
 ```bash
 ember install ember-aupac-db-reverse-engineering
 ```
