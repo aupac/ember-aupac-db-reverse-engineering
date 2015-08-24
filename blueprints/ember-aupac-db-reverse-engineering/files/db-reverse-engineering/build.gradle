@@ -14,7 +14,7 @@ configurations {
 dependencies {
 	reverseEngineer 'org.hibernate:hibernate-tools:4.0.0-CR1'
   reverseEngineer 'org.slf4j:slf4j-simple:1.7.5'
-  reverseEngineer files("${projectDir}/driver")
+  reverseEngineer fileTree(include: ['*.jar'], dir: 'drivers')
 }
 
 task wrapper(type: Wrapper) {
