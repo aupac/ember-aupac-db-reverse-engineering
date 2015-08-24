@@ -1,0 +1,205 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.*;
+
+repositories {
+  mavenCentral()
+}
+
+configurations {
+  reverseEngineer
+}
+
+dependencies {
+	reverseEngineer 'org.hibernate:hibernate-tools:4.0.0-CR1'
+  reverseEngineer 'org.slf4j:slf4j-simple:1.7.5'
+  reverseEngineer files("${projectDir}/driver/*.jar")
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.12'
+}
+
+class HibernateTools extends DefaultTask {
+
+    @Input
+    String template
+
+    @Input
+    String filePattern
+
+    @Input
+    String packageName
+
+    @TaskAction
+    def install() {
+
+        File hibernateDestDir = new File('./tmp/')
+        hibernateDestDir.exists() || hibernateDestDir.mkdirs()
+
+        def taskClasspath = project.configurations.reverseEngineer.asPath
+
+        project.ant {
+            taskdef(name: 'hibernatetool',
+                    classname: 'org.hibernate.tool.ant.HibernateToolTask',
+                    classpath : taskClasspath
+                    )
+            hibernatetool( destdir : hibernateDestDir, templatepath : 'templates/' ) {
+                jdbcconfiguration(
+                        propertyfile: "./hibernate.properties",
+                        revengfile: './hibernate.reveng.xml',
+                        packagename: packageName,
+                        //reversestrategy:"org.hibernate.cfg.reveng.ReverseEngineeringStrategy"
+                        //detectmanytomany="true|false"
+                        //detectoptmisticlock="true|false"
+                )
+                hbmtemplate(
+                    templateprefix: '',
+                    template: template,
+                    filepattern: filePattern
+                ) {
+                    property(key:"jdk5",value:"true")
+                    property(key:"ejb3",value:"true")
+                }
+                // Adds the config directory to the path so that log4j can pick up its properties file.
+                //classpath {
+                //    pathelement( path: "${projectDir}" )
+                //}
+            }
+        }
+    }
+}
+
+public def mergeFiles(final FileCollection files, final File target, final String header, final String footer) throws IOException {
+    target.withWriter { writer ->
+        writer << header
+        files.each { file ->
+            file.withReader { reader ->
+                writer << reader << '\n'
+            }
+        }
+        writer << footer
+    }
+}
+
+public def copyFiles(final String fromFolder, final String toFolder, boolean isOverwrite) throws IOException {
+    File toDir = new File(toFolder);
+    if (!toDir.exists()) {
+        toDir.mkdirs();
+    }
+    File fromFile = new File(fromFolder);
+    File[] listOfFiles = fromFile.listFiles();
+    for (File file : listOfFiles) {
+        if (!file.isDirectory()) {
+            String newName = file.getName().replaceAll("(.)(\\p{Upper})", '$1-$2').toLowerCase();
+            File toFile = new File(toFolder + "/" + newName);
+            if (!toFile.exists()) {
+                Files.copy(file.toPath(), toFile.toPath());
+                println "Copied " + newName
+            } else {
+                if(isOverwrite) {
+                    Files.copy(file.toPath(), toFile.toPath(), REPLACE_EXISTING);
+                    println "Already exists but replaced anyway:  " + newName
+                } else {
+                println "Already exists:  " + newName
+                }
+            }
+        }
+    }
+    new File(fromFolder).deleteDir()
+}
+
+
+//**************** Individual Tasks
+
+task emberDataModelsGen(type:HibernateTools ) {
+  description = 'Generate replaceable ember-data models from database'
+  group = 'Code Generation'
+
+	filePattern = "{package-name}/{class-name}-gen.js"
+	template = 'ember-data-model-gen.ftl'
+	packageName = "emberDataModelsGen"
+  doLast {
+    def fromDirectory = "${projectDir}/tmp/emberDataModelsGen"
+    def toDirectory = "${projectDir}/../app/models/gen"
+    copyFiles(fromDirectory, toDirectory, true)
+    println "copying files from ${fromDirectory} to ${toDirectory}"
+  }
+}
+
+task emberDataModels(type:HibernateTools ) {
+  description = 'Generate customisable ember-data models from database'
+  group = 'Code Generation'
+
+	filePattern = "{package-name}/{class-name}.js"
+	template = 'ember-data-model.ftl'
+	packageName = "emberDataModels"
+  doLast {
+    def fromDirectory = "${projectDir}/tmp/emberDataModels"
+    def toDirectory = "${projectDir}/../app/models"
+    copyFiles(fromDirectory, toDirectory, false)
+    println "copying files from ${fromDirectory} to ${toDirectory}"
+  }
+}
+
+task emberCliMirageFactoriesGen(type:HibernateTools ) {
+  description = 'Generate replaceable ember-cli-mirage factories from database'
+  group = 'Code Generation'
+
+	filePattern = "{package-name}/{class-name}-gen.js"
+	template = 'ember-cli-mirage-factory-gen.ftl'
+	packageName = "emberCliMirageFactoriesGen"
+  doLast {
+    def fromDirectory = "${projectDir}/tmp/emberCliMirageFactoriesGen"
+    def toDirectory = "${projectDir}/../app/mirage/gen"
+    copyFiles(fromDirectory, toDirectory, true)
+    println "copying files from ${fromDirectory} to ${toDirectory}"
+  }
+}
+
+task emberCliMirageFactories(type:HibernateTools ) {
+  description = 'Generate customisable ember-cli-mirage factories from database'
+  group = 'Code Generation'
+
+	filePattern = "{package-name}/{class-name}.js"
+	template = 'ember-cli-mirage-factory.ftl'
+	packageName = "emberCliMirageFactories"
+  doLast {
+    def fromDirectory = "${projectDir}/tmp/emberCliMirageFactories"
+    def toDirectory = "${projectDir}/../app/mirage/factories/"
+    copyFiles(fromDirectory, toDirectory, false)
+    println "copying files from ${fromDirectory} to ${toDirectory}"
+  }
+}
+
+task emberCliMirageRoutes(type:HibernateTools ) {
+  description = 'Generate ember-cli-mirage routes from database'
+  group = 'Code Generation'
+
+	filePattern = "{package-name}/{class-name}.js"
+	template = 'ember-cli-mirage-route.ftl'
+	packageName = "emberCliMirageRoutes"
+  doLast {
+    def fromDirectory = "${projectDir}/tmp/emberCliMirageRoutes"
+    def toDirectory = "${projectDir}/../app/mirage/gen"
+
+    def header = 'export default function routesGen() {';
+    def footer = '\n}';
+    mergeFiles(fileTree(dir: fromDirectory), file(toDirectory + "/routes.js"), header, footer)
+    println "copying routes from ${fromDirectory} to ${toDirectory}/routes.js"
+  }
+}
+
+//**************** Composed Tasks
+task emberData {
+    description = 'Generate ember-data models from database'
+    group = 'Code Generation'
+}
+emberData.dependsOn emberDataModelsGen, emberDataModels
+
+task emberCliMirage {
+    description = 'Generate ember-cli-mirage models from database'
+    group = 'Code Generation'
+}
+emberCliMirage.dependsOn emberCliMirageFactoriesGen, emberCliMirageFactories, emberCliMirageRoutes

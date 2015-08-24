@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN"
+            "http://www.hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+    <!--<schema-selection match-schema="YOUR_SCHEMA"/>-->
+
+    <!-- DEFINE YOU OWN CUSTOM TYPE MAPPINGS
+    <type-mapping>
+        <sql-type jdbc-type="CHAR" length='1' hibernate-type="yes_no" />
+        <sql-type jdbc-type="CHAR" length='2' hibernate-type="yes_no" />
+        <sql-type jdbc-type="OTHER" hibernate-type="java.sql.Timestamp" />
+    </type-mapping>
+    -->
+
+    <!-- EXCLUDE TABLES BASED ON THEIR NAME
+    <table-filter match-name=".*_AUD" exclude="true" match-schema="YOUR_SCHEMA"/>
+	  -->
+</hibernate-reverse-engineering>
