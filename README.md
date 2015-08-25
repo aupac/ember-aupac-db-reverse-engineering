@@ -96,7 +96,7 @@ More information can be found in the [hibernate documentation](http://docs.jboss
 
 ### Commands
 
-The first time you run any of the following command it will take some time because a number of dependencies need to be downloaded.  This only needs to happen once per project and future runs will be much faster.
+The first time you run any of the following commands it will take some time because a number of dependencies need to be downloaded.  This only needs to happen once per project and future runs will be much faster.
 
 #### Generate ember-data models 
 From within your project run:

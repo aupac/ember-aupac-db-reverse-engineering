@@ -18,6 +18,7 @@ module.exports = {
         aliases: ['db-rev-eng'],
         description: 'Reverse engineer your database; supported parameters are [emberData, emberCliMirage]',
         works: 'insideProject',
+
         runCommand: function(args) {
           return new RSVP.Promise(function (resolve, reject) {
             var child, result, options, i;
