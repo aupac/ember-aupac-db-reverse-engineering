@@ -10,7 +10,12 @@ Reverse engineer your database and create your `ember-data` models and `ember-cl
 ## Requirements
 
 - A recent version of [JAVA JRE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed on your development system (this is for development purposes only and it not required on your hosting server!).
-- ember-cli >= 1.13.9 (yet to be released!)
+- ember-cli >= 1.13.9 (yet to be released!) but there is a hack for people using older versions
+
+### Using a version of ember-cli < 1.13.9
+You will get a blueprint error when installing the addon.  The fix is to copy and paste the blueprint manually into your project.
+
+Copy the folder `yourproject/node_modules/ember-aupac-db-reverse-engineering/blueprints/ember-aupac-db-reverse-engineering/files/db-reverse-engineering` into the root of your project `yourproject/db-reverse-engineering`
 
 ## Operating Systems Supported 
 This is for development only - the server hosting you app can run any OS you like.
@@ -120,6 +125,14 @@ export default function() {
   //Add this in the existing exported function
   routes.apply(this, arguments);
 }
+```
+
+### Shorthand
+
+You can generate everything using the shorthand syntax.
+
+```bash
+ember db-rev-eng emberData emberCliMirage
 ```
 
 ## Customising the Templates
