@@ -72,7 +72,11 @@ TODO
 
 ##### Oracle Example
 ```
-TODO
+hibernate.connection.username=YOUR_USER
+hibernate.connection.password=YOUR_PASSWORD
+hibernate.connection.url=jdbc:oracle:thin:@//localhost:1521/xe
+hibernate.connection.driver_class=oracle.jdbc.OracleDriver
+hibernate.dialect=org.hibernate.dialect.OracleDialect
 ```
 
 ##### SQLServer Example
