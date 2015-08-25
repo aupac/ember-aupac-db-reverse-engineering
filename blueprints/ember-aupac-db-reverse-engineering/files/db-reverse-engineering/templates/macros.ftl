@@ -499,7 +499,7 @@
 import ${item};
 </#if></#list>
 </#macro>
-z
+
 <#macro importCollectionNakedProperties inPojo inC2h inPackageName suffix>
 <#local propertyList = ",">
   <#foreach property in inPojo.getAllPropertiesIterator()><#if inC2h.isCollection(property)><#local nakedProperty = getNakedProperty(inPojo, property)><#if !propertyList?contains("," + nakedProperty + ",")><#local propertyList = propertyList + nakedProperty + ",">

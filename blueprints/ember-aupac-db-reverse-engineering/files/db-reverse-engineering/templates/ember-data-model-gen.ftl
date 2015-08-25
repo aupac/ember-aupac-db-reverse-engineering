@@ -15,26 +15,32 @@ export default Ember.Mixin.create({
        <#assign propertyName = item?substring(0, item?index_of(':'))>
        <#assign propertyType = item?substring(item?index_of(':') + 1)>
        <#assign currentFieldCount = currentFieldCount + 1>
-    ${propertyName} : DS.attr('${propertyType?lower_case}')<#if currentFieldCount != totalFieldCount>,</#if>
+  ${propertyName}: DS.attr('${propertyType?lower_case}')<#if currentFieldCount != totalFieldCount>,</#if>
     </#if>
 </#list>
+<#assign simpleFieldCount = currentFieldCount>
+<#if simpleFieldCount != 0 && currentFieldCount != totalFieldCount>
 
+</#if>
 <#assign nonCollectionList = createEmberNonCollectionList(pojo clazz c2h)>
 <#list nonCollectionList?split(',')?sort as item><#if item != ''>
        <#assign propertyName = item?substring(0, item?index_of(':'))>
        <#assign propertyType = item?substring(item?index_of(':') + 1)>
        <#assign currentFieldCount = currentFieldCount + 1>
-    ${propertyName} : DS.belongsTo('${propertyType?lower_case}', {async: true })<#if currentFieldCount != totalFieldCount>,</#if>
-    </#if>
+  ${propertyName}: DS.belongsTo('${propertyType?lower_case}', { async: true })<#if currentFieldCount != totalFieldCount>,</#if>
+   </#if>
 </#list>
+<#assign nonCollection = currentFieldCount - simpleFieldCount>
+<#if nonCollection != 0 && currentFieldCount != totalFieldCount>
 
+</#if>
 <#assign collectionList = createEmberCollectionList(pojo clazz c2h cfg)>
 <#list collectionList?split(',')?sort as item><#if item != ''>
        <#assign propertyName = item?substring(0, item?index_of(':'))>
        <#assign finalResult = item?substring(item?index_of(':') + 1, item?last_index_of(':'))>
        <#assign inverse = item?substring(item?last_index_of(':') + 1)>
        <#assign currentFieldCount = currentFieldCount + 1>
-    ${propertyName} : DS.hasMany('${finalResult?lower_case}', { async: true, inverse: '${inverse}' })<#if currentFieldCount != totalFieldCount>,</#if>
+  ${propertyName}: DS.hasMany('${finalResult?lower_case}', { async: true, inverse: '${inverse}' })<#if currentFieldCount != totalFieldCount>,</#if>
     </#if>
 </#list>
 });
