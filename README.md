@@ -136,7 +136,7 @@ export default function() {
 You can generate everything using the shorthand syntax.
 
 ```bash
-ember db-rev-eng emberData emberCliMirage
+ember db-rev-eng eD eCM
 ```
 
 ## Customising the Templates
