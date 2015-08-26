@@ -41,7 +41,7 @@ When you install `ember-aupac-db-reverse-engineering` a new folder will appear i
 
 #### Step 1 - Get your JDBC Driver
 
-You need to download the JDBC driver specific to your database vendor and version.
+You need to download the JDBC driver specific to your database vendor and version. A full list of supported databases can be found [here](https://docs.jboss.org/hibernate/orm/4.3/manual/en-US/html_single/#configuration-optional-dialects).
 
 - [MySql driver](http://dev.mysql.com/downloads/connector/j/)
 - [PostgreSQL driver](https://jdbc.postgresql.org/)
