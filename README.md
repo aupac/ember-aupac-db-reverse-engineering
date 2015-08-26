@@ -67,7 +67,11 @@ hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 ##### PostgreSQL Example
 ```
-TODO
+hibernate.connection.username=YOUR_USER
+hibernate.connection.password=YOUR_PASSWORD
+hibernate.connection.url=jdbc:postgresql://localhost:5432/YOUR_DATABASE_NAME
+hibernate.connection.driver_class=org.postgresql.Driver
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ```
 
 ##### Oracle Example
@@ -81,7 +85,11 @@ hibernate.dialect=org.hibernate.dialect.OracleDialect
 
 ##### SQLServer Example
 ```
-TODO
+hibernate.connection.username=YOUR_USER
+hibernate.connection.password=YOUR_PASSWORD
+hibernate.connection.url=jdbc:sqlserver://[serverName[\instanceName][:portNumber]];databaseName=<databaseName>
+hibernate.connection.driver_class=com.microsoft.sqlserver.jdbc.SQLServerDriver
+hibernate.dialect=org.hibernate.dialect.SQLServerDialect
 ```
 
 #### Step 3 - Define Custom Mappings (Not Required)
