@@ -2,7 +2,7 @@
 
 [![NPM package](https://img.shields.io/npm/v/ember-aupac-db-reverse-engineering.svg)](https://www.npmjs.com/package/ember-aupac-db-reverse-engineering) [![Ember Observer Score](http://emberobserver.com/badges/ember-aupac-db-reverse-engineering.svg)](http://emberobserver.com/addons/ember-aupac-db-reverse-engineering)
 
-Reverse engineer your database and create your `ember-data` models and `ember-cli-mirage` factories automatically.
+Reverse engineer your database and create your [ember-data](https://github.com/emberjs/data) models and [ember-cli-mirage](https://github.com/samselikoff/ember-cli-mirage) factories automatically.
 - Change your database structure and regenerate your models to ensure they are always in sync.
 - Regenerate safely at any time without loosing your customisations.
 - Get up and running quickly and stop wasting time on boilerplate.
