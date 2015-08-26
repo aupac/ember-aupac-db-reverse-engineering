@@ -3,7 +3,7 @@
 [![NPM package](https://img.shields.io/npm/v/ember-aupac-db-reverse-engineering.svg)](https://www.npmjs.com/package/ember-aupac-db-reverse-engineering) [![Ember Observer Score](http://emberobserver.com/badges/ember-aupac-db-reverse-engineering.svg)](http://emberobserver.com/addons/ember-aupac-db-reverse-engineering)
 
 Reverse engineer your database and create your `ember-data` models and `ember-cli-mirage` factories automatically.
-- Change you database structure and regenerate you models to ensure they are always in sync.
+- Change your database structure and regenerate your models to ensure they are always in sync.
 - Regenerate safely at any time without loosing your customisations.
 - Get up and running quickly and stop wasting time on boilerplate.
 
@@ -18,7 +18,7 @@ You will get a blueprint error when installing the addon.  The fix is to copy an
 Copy the folder `yourproject/node_modules/ember-aupac-db-reverse-engineering/blueprints/ember-aupac-db-reverse-engineering/files/db-reverse-engineering` into the root of your project `yourproject/db-reverse-engineering`
 
 ## Operating Systems Supported 
-This is for development only - the server hosting you app can run any OS you like.
+This is for development only - the server hosting your app can run any OS you like.
 
 - Window
 - Linux running bash shell
