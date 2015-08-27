@@ -76,11 +76,16 @@ hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 ##### Oracle Example
 ```
-hibernate.connection.username=YOUR_USER
+hibernate.connection.username=YOUR_SCHEMA
 hibernate.connection.password=YOUR_PASSWORD
 hibernate.connection.url=jdbc:oracle:thin:@//localhost:1521/xe
 hibernate.connection.driver_class=oracle.jdbc.OracleDriver
 hibernate.dialect=org.hibernate.dialect.OracleDialect
+```
+
+Be sure to add the following to `hibernate.reveng.xml`
+```
+<schema-selection match-schema="YOUR_SCHEMA"/>
 ```
 
 ##### SQLServer Example

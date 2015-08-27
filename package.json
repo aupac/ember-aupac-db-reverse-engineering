@@ -1,6 +1,6 @@
 {
   "name": "ember-aupac-db-reverse-engineering",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Generate ember-data models by reverse engineering your database!",
   "directories": {
     "doc": "doc",
