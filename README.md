@@ -162,6 +162,18 @@ The templating language is called [freemarker](http://freemarker.org/docs/index.
 
 - Should the db-reverse-engineering folder be included in version control? ANSWER: Yes - except for the `tmp/` and `.gradle` folders.  For git users there is already a `.gitignore` file excluding these folders.
 
+- Gradle can't download behind a proxy! ANSWER: Create a files called `gradle.properties` inside the `db-reverse-engineering` folder and add the following lines updating the configuration as appropriate.
+
+```
+  systemProp.http.nonProxyHosts=PROXY_IP
+  systemProp.http.proxyHost=PROXY_IP
+  systemProp.http.proxyPort=PROXY_PORT
+  systemProp.https.nonProxyHosts=PROXY_IP
+  systemProp.https.proxyHost=PROXY_IP
+  systemProp.https.proxyPort=PROXY_PORT
+```
+
+
 # Contributing
 
 ## Installation
