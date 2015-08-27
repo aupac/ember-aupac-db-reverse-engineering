@@ -37,7 +37,7 @@ ember install ember-aupac-db-reverse-engineering
 
 ### Setup
 
-When you install `ember-aupac-db-reverse-engineering` a new folder will appear in your applications root directory `yourapp/db-reverse-engineering`.  This folder contains configuration specific to this addon.
+When you install `ember-aupac-db-reverse-engineering` a new folder will appear in your applications root directory `your-project/db-reverse-engineering`.  This folder contains configuration specific to this addon.
 
 #### Step 1 - Get your JDBC Driver
 
@@ -77,8 +77,8 @@ From within your project run:
 ember db-reverse-engineer emberData
 ```
 
-- `app/models/gen` - contains the generated models. These are replaced every time you run the command and should never be edited manually!
-- `app/models` - contains the ember-data models used in your application. Once created, these are never replaced so feel free to customise them as you wish.
+- `your-project/app/models/gen` - contains the generated models. These are replaced every time you run the command and should never be edited manually!
+- `your-project/app/models` - contains the ember-data models used in your application. Once created, these are never replaced so feel free to customise them as you wish.
 
 #### Generate ember-cli-mirage factories & routes
 From within your project run:
@@ -87,13 +87,13 @@ From within your project run:
 ember db-reverse-engineer emberCliMirage
 ```
 
-- `app/mirage/gen` - contains the generated factories and routes.js file. These are replaced every time you run the command and should never be edited manually!
-- `app/mirage/factories` - contains the factories used in your application. Once created, these are never replaced so feel free to customise them as you wish.
+- `your-project/app/mirage/gen` - contains the generated factories and routes.js file. These are replaced every time you run the command and should never be edited manually!
+- `your-project/app/mirage/factories` - contains the factories used in your application. Once created, these are never replaced so feel free to customise them as you wish.
 
-The routes are generated in a files called `app/mirage/gen/routes.js`.  You can copy/paste these into your `app/mirage/config.js` file but a better way is to import it - that way you get route updates automatically.
+The routes are generated in a files called `your-project/app/mirage/gen/routes.js`.  You can copy/paste these into your `your-project/app/mirage/config.js` file but a better way is to import it - that way you get route updates automatically.
 
 ```javascript
-//app/mirage/config.js
+//your-project/app/mirage/config.js
 import routes from './gen/routes';
  
 export default function() { 
@@ -113,7 +113,7 @@ ember db-rev-eng eD eCM
 
 ## Customising the Templates
 
-If the templates we have supplied do not suite your requirements; feel free to change them at `app/db-referse-engineering/templates`.
+If the templates we have supplied do not suite your requirements; feel free to change them at `your-project/db-referse-engineering/templates`.
 
 The templating language is called [freemarker](http://freemarker.org/docs/index.html).
 
