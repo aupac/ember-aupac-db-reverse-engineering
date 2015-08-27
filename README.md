@@ -56,47 +56,6 @@ Once downloaded, copy the `.jar` file to  `db-reverse-engineering/drvers/` in yo
 
 Open the file `db-reverse-engineering/hibernate.properties`.  You need to fill out the fields with the appropriate connection information.
 
-##### MySQL Example
-```
-hibernate.connection.username=YOUR_USER
-hibernate.connection.password=YOUR_PASSWORD
-hibernate.connection.url=jdbc:mysql://localhost:3306/YOUR_DATABASE_NAME
-hibernate.connection.driver_class=com.mysql.jdbc.Driver
-hibernate.dialect=org.hibernate.dialect.MySQLDialect
-```
-
-##### PostgreSQL Example
-```
-hibernate.connection.username=YOUR_USER
-hibernate.connection.password=YOUR_PASSWORD
-hibernate.connection.url=jdbc:postgresql://localhost:5432/YOUR_DATABASE_NAME
-hibernate.connection.driver_class=org.postgresql.Driver
-hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-```
-
-##### Oracle Example
-```
-hibernate.connection.username=YOUR_SCHEMA
-hibernate.connection.password=YOUR_PASSWORD
-hibernate.connection.url=jdbc:oracle:thin:@//localhost:1521/xe
-hibernate.connection.driver_class=oracle.jdbc.OracleDriver
-hibernate.dialect=org.hibernate.dialect.OracleDialect
-```
-
-Be sure to add the following to `hibernate.reveng.xml`
-```
-<schema-selection match-schema="YOUR_SCHEMA"/>
-```
-
-##### SQLServer Example
-```
-hibernate.connection.username=YOUR_USER
-hibernate.connection.password=YOUR_PASSWORD
-hibernate.connection.url=jdbc:sqlserver://[serverName[\instanceName][:portNumber]];databaseName=<databaseName>
-hibernate.connection.driver_class=com.microsoft.sqlserver.jdbc.SQLServerDriver
-hibernate.dialect=org.hibernate.dialect.SQLServerDialect
-```
-
 #### Step 3 - Define Custom Mappings (Not Required)
 
 Sometimes the reverse engineering strategy does not interpolate your database the way your would expect/want.  For example, you might want single character database fields `CHAR(1)` with values of `Y/N` interpolated as booleans instead of single character strings in your ember-models. 
