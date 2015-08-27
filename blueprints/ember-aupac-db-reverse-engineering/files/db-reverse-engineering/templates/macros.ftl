@@ -29,7 +29,7 @@
 </#function>
 
 <#function isPKorAuditField clazz property>
-   <#return property.equals(clazz.identifierProperty) || property.name?matches("createUserId|modifiedUserId|createDate|modifiedDate|version")>
+   <#return property.equals(clazz.identifierProperty)>
 </#function>
 
 <#function getPojoPropertyDefinitionLine pojo property jdk5 javaType propertyName>
