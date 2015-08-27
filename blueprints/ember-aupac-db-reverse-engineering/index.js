@@ -1,5 +1,5 @@
 module.exports = {
-  description: ''
+  description: 'ember-aupac-db-reverse-engineering'
 
   // locals: function(options) {
   //   // Return custom template variables here.
