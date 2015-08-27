@@ -1,4 +1,5 @@
 module.exports = {
+  normalizeEntityName: function() {},
   description: 'ember-aupac-db-reverse-engineering'
 
   // locals: function(options) {
