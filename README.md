@@ -9,7 +9,7 @@ Reverse engineer your database and create your [ember-data](https://github.com/e
 
 ## Requirements
 
-- A recent version of [JAVA JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed on your development system (this is for development purposes only and not required on your hosting server!).
+- A recent version of [JAVA 8 JDK (not JRE)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed on your development system (this is for development purposes only and not required on your hosting server!).
 - ember-cli >= 1.13.9 (yet to be released!) but there is a hack for people using older versions
 
 ### Using a version of ember-cli < 1.13.9
@@ -121,16 +121,7 @@ The templating language is called [freemarker](http://freemarker.org/docs/index.
 
 - Should the db-reverse-engineering folder be included in version control? ANSWER: Yes - except for the `tmp/` and `.gradle` folders.  For git users there is already a `.gitignore` file excluding these folders.
 
-- Gradle can't download behind a proxy! ANSWER: Create a files called `gradle.properties` inside the `db-reverse-engineering` folder and add the following lines updating the configuration as appropriate.
-
-```
-  systemProp.http.nonProxyHosts=PROXY_IP
-  systemProp.http.proxyHost=PROXY_IP
-  systemProp.http.proxyPort=PROXY_PORT
-  systemProp.https.nonProxyHosts=PROXY_IP
-  systemProp.https.proxyHost=PROXY_IP
-  systemProp.https.proxyPort=PROXY_PORT
-```
+- I am behind a proxy and get errors when downloading dependencies! ANSWER: See `db-reverse-engineering/gradle.properties`
 
 
 # Contributing
