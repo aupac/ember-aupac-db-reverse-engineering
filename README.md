@@ -9,7 +9,7 @@ Reverse engineer your database and create your [ember-data](https://github.com/e
 
 ## Requirements
 
-- A recent version of [JAVA 8 JDK (not JRE)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed on your development system (this is for development purposes only and not required on your hosting server!).
+- A recent version of [JAVA 8 JDK (not JRE)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed on your development system (this is for your development machine only and not required on your hosting server!).
 - ember-cli >= 1.13.9 (yet to be released!) but there is a hack for people using older versions
 
 ### Using a version of ember-cli < 1.13.9
