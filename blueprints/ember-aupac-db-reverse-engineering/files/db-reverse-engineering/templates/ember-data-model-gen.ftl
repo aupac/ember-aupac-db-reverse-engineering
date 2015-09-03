@@ -15,7 +15,11 @@ export default Ember.Mixin.create({
        <#assign propertyName = item?substring(0, item?index_of(':'))>
        <#assign propertyType = item?substring(item?index_of(':') + 1)>
        <#assign currentFieldCount = currentFieldCount + 1>
+       <#if propertyType == 'number'>
+  ${propertyName}: DS.attr('${propertyType?lower_case}', { defaultValue: 0 })<#if currentFieldCount != totalFieldCount>,</#if> 
+       <#else>
   ${propertyName}: DS.attr('${propertyType?lower_case}')<#if currentFieldCount != totalFieldCount>,</#if>
+       </#if>
     </#if>
 </#list>
 <#assign simpleFieldCount = currentFieldCount>
